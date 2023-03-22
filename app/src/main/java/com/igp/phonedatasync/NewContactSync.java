@@ -167,10 +167,11 @@ public class NewContactSync extends AppCompatActivity {
                         } catch (ParseException e) {
                             e.printStackTrace();
                         }
+                        contactsInfoList.add(contactsInfo);
                     }
                     bdc.close();
                     //email
-                    contactsInfoList.add(contactsInfo);
+                    //    contactsInfoList.add(contactsInfo);
                 }
 
             }
