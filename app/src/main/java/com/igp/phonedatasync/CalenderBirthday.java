@@ -8,6 +8,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.CalendarContract;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -83,12 +84,14 @@ public class CalenderBirthday extends AppCompatActivity {
                         @SuppressLint("Range") String event_loc = cur1.getString(cur1.getColumnIndex(CalendarContract.Events.EVENT_LOCATION));
                         String all_attendee = null;
                         String all_Emails = null;
-                        if (event_Title.contains("birthday") || event_Title.contains("Birthday") || event_Title.contains("anni") || event_Title.contains("Anni")) {
-                            //  StoreContacts.add(event_Title);
-                            StoreContacts.add("Event title: " + event_Title + "\n"
-                                    + "Event Description: " + event_Desc + "\n"
-                                    + "Event Start: " + event_Start + "\n" + "Events End: "
-                                    + event_end);
+                        if(!TextUtils.isEmpty(event_Title)){
+                            if (event_Title.contains("birthday") || event_Title.contains("Birthday") || event_Title.contains("anni") || event_Title.contains("Anni")) {
+                                //  StoreContacts.add(event_Title);
+                                StoreContacts.add("Event title: " + event_Title + "\n"
+                                        + "Event Description: " + event_Desc + "\n"
+                                        + "Event Start: " + event_Start + "\n" + "Events End: "
+                                        + event_end);
+                            }
                         }
 
                         @SuppressLint("Range") String cal_ID = cur1.getString(cur1.getColumnIndex(CalendarContract.Events.CALENDAR_ID));

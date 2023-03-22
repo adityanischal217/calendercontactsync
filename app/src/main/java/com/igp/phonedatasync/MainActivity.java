@@ -8,6 +8,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.CalendarContract;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -116,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
                         // GetContactsIntoArrayList();
 
 
-                        if (event_Title.contains("birthday")) {
+                        if (!TextUtils.isEmpty(event_Title) &&event_Title.contains("birthday")) {
 
 
                         }
