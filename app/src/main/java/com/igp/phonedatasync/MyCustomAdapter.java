@@ -53,13 +53,13 @@ public class MyCustomAdapter extends ArrayAdapter {
         }
 
         ContactsInfo contactsInfo = (ContactsInfo) contactsInfoList.get(position);
-        holder.displayName.setText("Name - " + contactsInfo.getDisplayName());
-        holder.phoneNumber.setText("Phone - " + contactsInfo.getPhoneNumber());
+        holder.displayName.setText("Name - " + contactsInfo.getDisplayName().replace(" ", "").replaceAll("\\w(?=\\w{4})", "*"));
+        holder.phoneNumber.setText("Phone - " + contactsInfo.getPhoneNumber().replace(" ", "").replaceAll("\\w(?=\\w{4})", "*"));
         if (contactsInfo.getEmail() == null || contactsInfo.getEmail().equalsIgnoreCase("")) {
             holder.email.setVisibility(View.GONE);
         } else {
             holder.email.setVisibility(View.VISIBLE);
-            holder.email.setText("Email -" + contactsInfo.getEmail());
+            holder.email.setText("Email -" + contactsInfo.getEmail().replaceAll("(^[^@]{3}|(?!^)\\G)[^@]", "$1*"));
         }
         if (contactsInfo.getBirthDate() == null || contactsInfo.getBirthDate().equalsIgnoreCase("")) {
             holder.birthDay.setVisibility(View.GONE);

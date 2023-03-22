@@ -149,7 +149,9 @@ public class NewContactSync extends AppCompatActivity {
 
                     while (bdc.moveToNext()) {
                         String birthday = bdc.getString(bdc.getColumnIndex(ContactsContract.CommonDataKinds.Event.START_DATE));
-                        @SuppressLint("SimpleDateFormat") DateFormat inputFormat = null;
+                        Log.i("birthday", "birthday - " + birthday);
+                        contactsInfo.setBirthDate(birthday);
+                       /* @SuppressLint("SimpleDateFormat") DateFormat inputFormat = null;
                         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
                             inputFormat = new SimpleDateFormat("YYYYMMDD");
                         }
@@ -166,7 +168,7 @@ public class NewContactSync extends AppCompatActivity {
                             }
                         } catch (ParseException e) {
                             e.printStackTrace();
-                        }
+                        }*/
                         contactsInfoList.add(contactsInfo);
                     }
                     bdc.close();
