@@ -71,8 +71,14 @@ public class NewContactSync extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String result) {
-            dataAdapter = new MyCustomAdapter(NewContactSync.this, R.layout.contact_info, contactsInfoList);
-            listView.setAdapter(dataAdapter);
+            if (!contactsInfoList.isEmpty()) {
+                dataAdapter = new MyCustomAdapter(NewContactSync.this, R.layout.contact_info, contactsInfoList);
+                listView.setAdapter(dataAdapter);
+            } else {
+                Toast.makeText(NewContactSync.this, "No Data Found", Toast.LENGTH_LONG).show();
+
+            }
+
             findViewById(R.id.progress).setVisibility(View.GONE);
         }
 
